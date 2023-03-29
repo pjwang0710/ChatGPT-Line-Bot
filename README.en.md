@@ -4,6 +4,13 @@
 
 [![license](https://img.shields.io/pypi/l/ansicolortags.svg)](LICENSE) [![Release](https://img.shields.io/github/v/release/TheExplainthis/ChatGPT-Line-Bot)](https://github.com/TheExplainthis/ChatGPT-Line-Bot/releases/)
 
+
+## Update
+- 2023/03/23 Update summary of Youtube videos and news articles (supports: United Daily News, SET, Yahoo News, Central News Agency, Storm Media, TVBS, Liberty Times, ETtoday, China Times, Line News, TTV News)
+- 2023/03/18 Added Whisper service, users can now add their own tokens, and added command (refer to the documentation below)
+- 2023/03/03 Model change to chat completion: `gpt-3.5-turbo`
+
+
 ## Introduction
 Import the ChatGPT bot to Line and start interacting with it by simply typing text in the input box. In addition to ChatGPT, the model for DALL·E 2 is also integrated. Enter `/imagine + text` to return the corresponding image, as shown in the figure below:
 
@@ -42,19 +49,16 @@ Import the ChatGPT bot to Line and start interacting with it by simply typing te
 1. Environment variables setting:
     1. After completing the previous step of `Import`, click on `Tools` at the bottom left of the project management page in `Replit`, then click on `Secrets`.
     2. Click on `Got it` on the right side to add environment variables, which includes:
-        1. OpenAI API Token:
-            - key: `OPENAI_API`
-            - value: `[obtained from step one]`
-        2. The selected model:
+        1. Desired model:
             - key: `OPENAI_MODEL_ENGINE`
-            - value: `text-davinci-003`
-        3. ChatGPT text limit:
-            - key: `OPENAI_MAX_TOKENS`
-            - value: `128`
-        4. Line Channel Secret:
+            - value: `gpt-3.5-turbo`
+        2. ChatGPT wants the assistant to play the role of a keyword (currently, no further usage instructions have been officially released, and players can test it themselves).
+            - key: `SYSTEM_MESSAGE`
+            - value: `You are a helpful assistant.`
+        3. Line Channel Secret:
             - key: `LINE_CHANNEL_SECRET`
             - value: `[obtained from step one]`
-        5. Line Channel Access Token:
+        4. Line Channel Access Token:
             - key: `LINE_CHANNEL_ACCESS_TOKEN`
             - value: `[obtained from step one]`
 2. Start running:
@@ -67,16 +71,28 @@ Import the ChatGPT bot to Line and start interacting with it by simply typing te
 3. CronJob scheduled request sending:
     1. Register/Login to [cron-job.org](https://cron-job.org/en/)
     2. In the upper right corner of the panel, select `CREATE CRONJOB`
-    3. Enter `ChatGPT-Discord-Bot` in the Title field, and enter the URL from the previous step, for example: `https://ChatGPT-Line-Bot.explainthis.repl.co/`
+    3. Enter `ChatGPT-Line-Bot` in the Title field, and enter the URL from the previous step, for example: `https://ChatGPT-Line-Bot.explainthis.repl.co/`
     4. Send a request every `5 minutes` below
     5. Click on `CREATE`
 
 ## Commands
 To start a conversation with ChatGPT, simply type your message in the text input box. Other available commands include:
 
+
 | Command | Description |
 | ------- | ----------- |
-| `/imagine` |  Type `/imagine` followed by text in the input box to call the DALL·E 2 model and generate an image. |
+| `/註冊` | Enter `/註冊` + OpenAI API Token in the input box to register your token|
+| `/系統訊息` | Enter `/系統訊息` + the role you want ChatGPT to play in the input box|
+| `/清除` | Enter `/清除` in the input box to clear the chat history|
+| `/圖像` | Enter `/圖像` + command in the input box to call the DALL·E 2 model and generate an image|
+| Voice input | Use voice input, the system will automatically translate the voice into text, and ChatGPT will respond in text| 
+| Text input | Directly input text to enter the normal ChatGPT conversation mode|
+
+
+## Support Us
+Like this free project? Please consider [supporting us](https://www.buymeacoffee.com/explainthis) to keep it running.
+
+[<a href="https://www.buymeacoffee.com/explainthis" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="45px" width="162px" alt="Buy Me A Coffee"></a>](https://www.buymeacoffee.com/explainthis)
 
 ## Related Projects
 - [gpt-ai-assistant](https://github.com/memochou1993/gpt-ai-assistant)
